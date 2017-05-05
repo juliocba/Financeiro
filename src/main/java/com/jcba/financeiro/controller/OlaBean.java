@@ -1,4 +1,4 @@
-package com.jcba.financeiro.mb;
+package com.jcba.financeiro.controller;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;

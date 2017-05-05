@@ -1,4 +1,4 @@
-package com.jcba.financeiro.mb;
+package com.jcba.financeiro.controller;
 
 import java.io.Serializable;
 import java.util.List;
