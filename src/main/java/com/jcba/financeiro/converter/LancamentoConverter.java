@@ -6,20 +6,20 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
-import com.jcba.financeiro.model.Pessoa;
-import com.jcba.financeiro.repository.Pessoas;
+import com.jcba.financeiro.model.Lancamento;
+import com.jcba.financeiro.repository.Lancamentos;
 
-@FacesConverter(forClass = Pessoa.class)
-public class PessoaConverter implements Converter {
+@FacesConverter(forClass = Lancamento.class)
+public class LancamentoConverter implements Converter {
 
 	@Inject
-	private Pessoas pessoas;
+	private Lancamentos lancamentos;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		Pessoa retorno = null;
-		if (value != null) {
-			retorno = pessoas.porId(new Long(value));
+		Lancamento retorno = null;
+		if (value != null && !"".equals(value)) {
+			retorno = this.lancamentos.porId(new Long(value));
 		}
 		return retorno;
 	}
@@ -27,8 +27,10 @@ public class PessoaConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
-			return ((Pessoa) value).getId().toString();
+			Lancamento lancamento = ((Lancamento) value);
+			return lancamento.getId() == null ? null : lancamento.getId().toString();
 		}
 		return null;
 	}
+
 }

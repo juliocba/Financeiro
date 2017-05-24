@@ -15,11 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.jcba.financeiro.validation.DecimalPositivo;
 
 @Entity
 @Table(name = "lancamento")
@@ -38,8 +39,7 @@ public class Lancamento implements Serializable {
 	@Size(max = 80)
 	@Column(length = 80, nullable = false)
 	private String descricao;
-	@NotNull
-	@DecimalMin("0")
+	@DecimalPositivo
 	@Column(precision = 10, scale = 2, nullable = false)
 	private BigDecimal valor;
 	@NotNull
